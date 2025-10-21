@@ -23,32 +23,79 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include "peripheral_status.h"
 
-LV_IMG_DECLARE(corro01);
-LV_IMG_DECLARE(corro02);
-LV_IMG_DECLARE(corro03);
-LV_IMG_DECLARE(corro04);
-LV_IMG_DECLARE(corro05);
-LV_IMG_DECLARE(corro06);
-LV_IMG_DECLARE(corro07);
-LV_IMG_DECLARE(corro08);
-LV_IMG_DECLARE(corro09);
-LV_IMG_DECLARE(corro10);
-LV_IMG_DECLARE(corro11);
-LV_IMG_DECLARE(corro12);
+LV_IMG_DECLARE(saja01);
+LV_IMG_DECLARE(saja02);
+LV_IMG_DECLARE(saja03);
+LV_IMG_DECLARE(saja04);
+LV_IMG_DECLARE(saja05);
+LV_IMG_DECLARE(saja06);
+LV_IMG_DECLARE(saja07);
+LV_IMG_DECLARE(saja08);
+LV_IMG_DECLARE(saja09);
+LV_IMG_DECLARE(saja10);
+LV_IMG_DECLARE(saja11);
+LV_IMG_DECLARE(saja12);
+LV_IMG_DECLARE(saja13);
+LV_IMG_DECLARE(saja14);
+LV_IMG_DECLARE(saja15);
+LV_IMG_DECLARE(saja16);
+LV_IMG_DECLARE(saja17);
+LV_IMG_DECLARE(saja18);
+LV_IMG_DECLARE(saja19);
+LV_IMG_DECLARE(saja20);
+LV_IMG_DECLARE(saja21);
+LV_IMG_DECLARE(saja22);
+LV_IMG_DECLARE(saja23);
+LV_IMG_DECLARE(saja24);
+LV_IMG_DECLARE(saja25);
+LV_IMG_DECLARE(saja26);
+LV_IMG_DECLARE(saja27);
+LV_IMG_DECLARE(saja28);
+LV_IMG_DECLARE(saja29);
+LV_IMG_DECLARE(saja30);
+LV_IMG_DECLARE(saja31);
+LV_IMG_DECLARE(saja32);
+LV_IMG_DECLARE(saja33);
+LV_IMG_DECLARE(saja34);
+
 
 const lv_img_dsc_t *anim_imgs[] = {
-    &corro01,
-    &corro02,
-    &corro03,
-    &corro04,
-    &corro05,
-    &corro06,
-    &corro07,
-    &corro08,
-    &corro09,
-    &corro10,
-    &corro11,
-    &corro12,
+    &saja01,
+    &saja02,
+    &saja03,
+    &saja04,
+    &saja05,
+    &saja06,
+    &saja07,
+    &saja08,
+    &saja09,
+    &saja10,
+    &saja11,
+    &saja12,
+    &saja13,
+    &saja14,
+    &saja15,
+    &saja16,
+    &saja17,
+    &saja18,
+    &saja19,
+    &saja20,
+    &saja21,
+    &saja22,
+    &saja23,
+    &saja24,
+    &saja25,
+    &saja26,
+    &saja27,
+    &saja28,
+    &saja29,
+    &saja30,
+    &saja31,
+    &saja32,
+    &saja33,
+    &saja34,
+
+
 };
 
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
@@ -142,21 +189,23 @@ int zmk_widget_status_init(struct zmk_widget_status *widget, lv_obj_t *parent) {
     //lv_obj_t *art = lv_img_create(widget->obj);
     //bool random = sys_rand32_get() & 1;
     //lv_img_set_src(art, random ? &balloon : &mountain);
-    //lv_img_set_src(art, &corro01);
+    //lv_img_set_src(art, &saja01);
 
     lv_obj_t * art = lv_animimg_create(widget->obj);            //<--
     lv_obj_center(art);                                         //<--
-    lv_animimg_set_src(art, (const void **) anim_imgs, 12);     //<--
-    lv_animimg_set_duration(art, CONFIG_CUSTOM_ANIMATION_SPEED);//<--
+    lv_animimg_set_src(art, (const void **) anim_imgs, 34);     //<--
+    lv_animimg_set_duration(art, 3400);                         //<--
     lv_animimg_set_repeat_count(art, LV_ANIM_REPEAT_INFINITE);  //<--
     lv_animimg_start(art);                                      //<--
 
     lv_obj_align(art, LV_ALIGN_TOP_LEFT, 0, 0);
+
     sys_slist_append(&widgets, &widget->node);
     widget_battery_status_init();
     widget_peripheral_status_init();
 
     return 0;
 }
+
 
 lv_obj_t *zmk_widget_status_obj(struct zmk_widget_status *widget) { return widget->obj; }
